@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About Me</title>
+  <link rel="stylesheet" href="style.css"/>
+  <style>
+    /* Modal Pop-up CSS */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 2000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.8);
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal-content-img,
+    .modal-content-video {
+      max-width: 90%;
+      max-height: 80vh;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+    }
+
+    .close {
+      position: absolute;
+      top: 30px;
+      right: 40px;
+      color: white;
+      font-size: 2.5rem;
+      font-weight: bold;
+      cursor: pointer;
+      z-index: 2001;
+    }
+
+    .about-only-text {
+      margin-top: 2rem;
+      padding: 0 2rem;
+    }
+
+    /* Carousel Styling */
+    .carousel {
+      overflow: hidden;
+      width: 100%;
+      padding: 2rem 0;
+    }
+
+    .carousel-wrapper {
+      width: 100%;
+      position: relative;
+    }
+
+    .carousel-track {
+      display: flex;
+      width: calc(10 * 220px);
+      animation: scrollCarousel 30s linear infinite;
+    }
+
+    .carousel-item {
+      flex: 0 0 auto;
+      width: 200px;
+      margin: 0 10px;
+      cursor: pointer;
+    }
+
+    .carousel-item img {
+      width: 100%;
+      border-radius: 10px;
+      box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+    }
+
+    @keyframes scrollCarousel {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    footer {
+      background-color: #1d4e89;
+      color: white;
+      text-align: center;
+      padding: 1rem 0;
+      margin-top: 2rem;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="logo"></div>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="ABOUTME.html" class="active">About Me</a></li>
+        <li>
+          <a href="#">Education</a>
+          <ul class="dropdown">
+            <li><a href="PRIMARY.html">Primary</a></li>
+            <li><a href="SECONDARY.html">Secondary</a></li>
+            <li><a href="FORM6.html">Form 6</a></li>
+            <li><a href="UNIVERSITY.html">University</a></li>
+          </ul>
+        </li>
+        <li><a href="SKILLS.html">Skills</a></li>
+        <li><a href="CONTACT.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- About Me Text Section -->
+  <section class="about-only-text">
+    <div class="intro-text">
+      <h1>About Me</h1>
+      <p>Welcome to my personal resume website.</p>
+      <p>Hi! My name is Welna Metcheal Jamirin, but I'm often called Welna or just Well. I was born in December 2004, in Kota Marudu, Sabah. I'm currently pursuing a Bachelor's Degree in Information Science (Hons.) Library Management at Universiti Teknologi MARA.</p>
+      <p>I'm passionate about organizing information and designing meaningful digital content. In the future, I hope to work in a field that blends creativity and technology, such as digital publishing, UX content design, or knowledge management.</p>
+    </div>
+  </section>
+
+  <!-- Image & Video Carousel -->
+  <section class="carousel">
+    <div class="carousel-wrapper">
+      <div class="carousel-track">
+        <!-- Duplicate items for seamless loop -->
+        <div class="carousel-item" onclick="openImage('IMAGE 1.jpeg')">
+          <img src="IMAGE 1.jpeg" alt="Fun Fact 1" />
+        </div>
+        <div class="carousel-item" onclick="openImage('IMAGE 2.jpeg')">
+          <img src="IMAGE 2.jpeg" alt="Fun Fact 2" />
+        </div>
+        <div class="carousel-item" onclick="openImage('IMAGE 3.jpeg')">
+          <img src="IMAGE 3.jpeg" alt="Fun Fact 3" />
+        </div>
+        <div class="carousel-item" onclick="openImage('IMAGE 4.jpeg')">
+          <img src="IMAGE 4.jpeg" alt="Fun Fact 4" />
+        </div>
+        <div class="carousel-item" onclick="openVideo('VIDEO1.mp4')">
+          <img src="IMAGE 5.jpeg" alt="Fun Fact 5 (Video)" />
+        </div>
+
+        <!-- Repeat again for loop -->
+        <div class="carousel-item" onclick="openImage('IMAGE 1.jpeg')">
+          <img src="IMAGE 1.jpeg" alt="Fun Fact 1" />
+        </div>
+        <div class="carousel-item" onclick="openImage('IMAGE 2.jpeg')">
+          <img src="IMAGE 2.jpeg" alt="Fun Fact 2" />
+        </div>
+        <div class="carousel-item" onclick="openImage('IMAGE 3.jpeg')">
+          <img src="IMAGE 3.jpeg" alt="Fun Fact 3" />
+        </div>
+        <div class="carousel-item" onclick="openImage('IMAGE 4.jpeg')">
+          <img src="IMAGE 4.jpeg" alt="Fun Fact 4" />
+        </div>
+        <div class="carousel-item" onclick="openVideo('VIDEO1.mp4')">
+          <img src="IMAGE 5.jpeg" alt="Fun Fact 5 (Video)" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Image Modal -->
+  <div id="imageModal" class="modal">
+    <span class="close" onclick="closeModal('imageModal')">&times;</span>
+    <img class="modal-content-img" id="modalImage" />
+  </div>
+
+  <!-- Video Modal -->
+  <div id="videoModal" class="modal">
+    <span class="close" onclick="closeVideoModal()">&times;</span>
+    <video class="modal-content-video" id="modalVideo" controls></video>
+  </div>
+
+<!-- Footer -->
+  <footer style="background-color: #3178a5; color: white; text-align: center; padding: 1rem 0;">
+    <p>© 2025 Welna. All rights reserved.</p>
+  </footer>
+</body>
+</html>
+
+  <!-- JavaScript for Modals -->
+  <script>
+    function openImage(src) {
+      const modal = document.getElementById("imageModal");
+      const modalImg = document.getElementById("modalImage");
+      modal.style.display = "flex";
+      modalImg.src = src;
+    }
+
+    function openVideo(src) {
+      const modal = document.getElementById("videoModal");
+      const video = document.getElementById("modalVideo");
+      modal.style.display = "flex";
+      video.src = src;
+      video.play();
+    }
+
+    function closeModal(modalId) {
+      const modal = document.getElementById(modalId);
+      modal.style.display = "none";
+      if (modalId === "videoModal") {
+        const video = document.getElementById("modalVideo");
+        video.pause();
+        video.currentTime = 0;
+      }
+    }
+
+    function closeVideoModal() {
+      closeModal("videoModal");
+    }
+
+    window.onclick = function(event) {
+      const imageModal = document.getElementById("imageModal");
+      const videoModal = document.getElementById("videoModal");
+      if (event.target === imageModal) closeModal("imageModal");
+      else if (event.target === videoModal) closeModal("videoModal");
+    };
+  </script>
+
+</body>
+</html>
